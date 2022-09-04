@@ -68,7 +68,7 @@ ui button {
 
 ui h1 {
   position: absolute;
-  margin-block: 20vw;
+  margin-block: 10vw;
   font-family: "Oswald", sans-serif;
 }
 
@@ -218,8 +218,8 @@ ui h1 {
 .score-board {
   display: block;
   padding: 2ch;
-  margin: 2vw;
-  top: 4vw;
+  margin: 1vw;
+  top: 1vw;
   margin-left: auto;
   color: wheat;
   font-size: 2em;
@@ -236,8 +236,8 @@ ui h1 {
 }
 
 .GamePad {
-  width: 50vw;
-  max-width: 400px;
+  width: 40vw;
+  max-width: 250px;
   aspect-ratio: 1;
   padding: 1ch;
   display: grid;
