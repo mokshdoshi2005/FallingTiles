@@ -36,8 +36,8 @@ if (screen.width <= 800) {
     GAMEPADLEFT.addEventListener('click' ,() => {
         var player = document.querySelector('.player')
         let Ary = LocatePlayer()
-        if (Ary[1] < (GRID_SIZE - 1)){
-            movedown(player)
+        if (Ary[0] > 0){
+            moveleft(player)
             ALLGAMERUN()
         }
     });
