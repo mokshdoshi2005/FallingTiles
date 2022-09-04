@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  background-color: #cacaca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+spanMine {
+  position: absolute;
+  outline: 5px solid whitesmoke;
+  border-radius: 0.2rem;
+  background-color: #828282;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 700, "GRAD" 0, "opsz" 48;
+}
+
+ui {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  grid-auto-flow: row;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  background: linear-gradient(rgb(55, 95, 169), rgb(140, 180, 255));
+  transition: transform 1s ease-in-out;
+  color: white;
+}
+
+ui.STARTED {
+  transform: translateY(-100%);
+}
+
+ui > p {
+  font-size: large;
+  margin-inline: 2vw;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+ui button {
+  outline: none;
+  box-sizing: none;
+  background-color: #cacaca;
+  padding: 2ch;
+  border-radius: 0.5rem;
+}
+
+ui h1 {
+  position: absolute;
+  margin-block: 20vw;
+  font-family: "Oswald", sans-serif;
+}
+
+#GameBoard {
+  position: relative;
+  background-color: #828282;
+  border-radius: 2%;
+  aspect-ratio: 1;
+  padding: var(--GRID-GAP);
+  gap: var(--GRID-GAP);
+  display: grid;
+  grid-template-columns: repeat(var(--GRID-SIZE), 1fr);
+  grid-template-rows: repeat(var(--GRID-SIZE), 1fr);
+}
+
+.cell {
+  width: var(--CELL-SIZE);
+  aspect-ratio: 1;
+  background-color: #cacaca;
+  border-radius: 5%;
+}
+@media (min-width: 600px) {
+  .cell {
+    width: calc(var(--CELL-SIZE-WIDE) * 0.7);
+  }
+}
+@media (min-width: 1400px) {
+  .cell {
+    width: var(--CELL-SIZE);
+  }
+}
+
+.player {
+  position: absolute;
+  background-color: #fcba03;
+  border-radius: 5%;
+  width: var(--CELL-SIZE);
+  top: calc(var(--y) * (var(--CELL-SIZE) + var(--GRID-GAP)) + var(--GRID-GAP));
+  left: calc(var(--x) * (var(--CELL-SIZE) + var(--GRID-GAP)) + var(--GRID-GAP));
+  aspect-ratio: 1;
+}
+@media (min-width: 600px) {
+  .player {
+    width: calc(var(--CELL-SIZE-WIDE) * 0.7);
+    top: calc(var(--y) * (var(--CELL-SIZE-WIDE) * 0.7 + var(--GRID-GAP)) + var(--GRID-GAP));
+    left: calc(var(--x) * (var(--CELL-SIZE-WIDE) * 0.7 + var(--GRID-GAP)) + var(--GRID-GAP));
+  }
+}
+@media (min-width: 1400px) {
+  .player {
+    width: var(--CELL-SIZE);
+    top: calc(var(--y) * (var(--CELL-SIZE) + var(--GRID-GAP)) + var(--GRID-GAP));
+    left: calc(var(--x) * (var(--CELL-SIZE) + var(--GRID-GAP)) + var(--GRID-GAP));
+  }
+}
+@media (width: 944px) {
+  .player {
+    width: 149px;
+  }
+}
+
+.fallen {
+  -webkit-animation: Fall 2s ease 500ms forwards;
+          animation: Fall 2s ease 500ms forwards;
+}
+
+@-webkit-keyframes Fall {
+  from {
+    width: 100%;
+    height: auto;
+  }
+  to {
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes Fall {
+  from {
+    width: 100%;
+    height: auto;
+  }
+  to {
+    width: 0;
+    height: 0;
+  }
+}
+@-webkit-keyframes reappear {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  75% {
+    width: 100%;
+    height: auto;
+    background-color: hsl(0deg, 48%, 68%);
+  }
+  100% {
+    background-color: #cacaca;
+  }
+}
+@keyframes reappear {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  75% {
+    width: 100%;
+    height: auto;
+    background-color: hsl(0deg, 48%, 68%);
+  }
+  100% {
+    background-color: #cacaca;
+  }
+}
+.OVER {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(25%, 25%);
+  margin: 0;
+  font-size: 2em;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 1rem;
+  background-color: red;
+  color: white;
+  place-content: center;
+}
+
+/* Backdrop is only displayed when dialog is opened with dialog.showModal() */
+.OVER::-webkit-backdrop {
+  position: fixed;
+  inset: 0 0 0 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0deg, 100%, 46%, 0.35);
+}
+.OVER::backdrop {
+  position: fixed;
+  inset: 0 0 0 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0deg, 100%, 46%, 0.35);
+}
+
+.score-board {
+  display: block;
+  padding: 2ch;
+  margin: 2vw;
+  top: 4vw;
+  margin-left: auto;
+  color: wheat;
+  font-size: 2em;
+}
+@media (max-width: 425px) {
+  .score-board {
+    width: 90vw;
+  }
+}
+
+.score-board::before {
+  content: "Score:";
+  font-family: "Courier New", Courier, monospace;
+}
+
+.GamePad {
+  width: 50vw;
+  max-width: 400px;
+  aspect-ratio: 1;
+  padding: 1ch;
+  display: grid;
+  place-content: center;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: larger;
+  opacity: 0.7;
+  bottom: 4vw;
+}
+@media (min-width: 800px) {
+  .GamePad {
+    display: none;
+  }
+}
+@media (min-width: 700px) {
+  .GamePad {
+    left: 1vw;
+  }
+}
+
+.GamePad > #GAMEPAD-UP, .GamePad > #GAMEPAD-DOWN {
+  transform: rotate(90deg);
+}
+
+.GamePad > *, .GamePad > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */
