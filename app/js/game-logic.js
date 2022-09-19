@@ -26,14 +26,15 @@ function PlayerLost(playerLocationARY,fallen__blockARY) {
     if (playerLocationARY[0] == fallen__blockARY[0] && playerLocationARY[1] == fallen__blockARY[1]) {
         // let player = document.querySelector('.player')
         // player.style.animation = 'Fall 2s ease 500ms forwards';
+        let gameOVER__Sound_effect = document.querySelector("audio",'#game-over-audio');
+        gameOVER__Sound_effect.src = '/resources/mixkit-arcade-retro-game-over-213.wav';
+        
         let gameOVER = document.querySelector(".OVER");
         gameOVER.style.width = "70vw";
         // gameOVER.style.height = "70vh";
         gameOVER.style.display = "grid"
         gameOVER.showModal()
         
-        let gameOVER__Sound_effect = document.querySelector("audio",'#game-over-audio');
-        gameOVER__Sound_effect.src = '/resources/mixkit-arcade-retro-game-over-213.wav';
         console.log('GAME OVER')
         playing = false
     }
