@@ -72,7 +72,7 @@ document.addEventListener("keypress", e => {
     // up = 38      keycode
     // right = 39
     // down = 40
-    if (e.key == 'w' || e.key == "ArrowUp") {
+    if (e.key == 'w' || e.key == "ArrowUp" || e.key === "W" || e.key === 8) {
         var player = document.querySelector('.player')
         let Ary = LocatePlayer()
         let validArg = validMove(parseInt(Ary[0]),(parseInt(Ary[1]) - 1))
@@ -81,7 +81,7 @@ document.addEventListener("keypress", e => {
             ALLGAMERUN()
         }
     }
-    else if (e.key == 's' || e.key == "ArrowDown") {
+    else if (e.key == 's' || e.key == "ArrowDown" || e.key === "S" || e.key === 2) {
         var player = document.querySelector('.player')
         let Ary = LocatePlayer()
         let validArg = validMove(parseInt(Ary[0]),parseInt(Ary[1]) + 1)
@@ -90,7 +90,7 @@ document.addEventListener("keypress", e => {
             ALLGAMERUN()
         }
     }
-    else if (e.key == 'a' || e.key == "ArrowLeft") {
+    else if (e.key == 'a' || e.key == "ArrowLeft" || e.key === "A" || e.key === 4) {
         var player = document.querySelector('.player')
         let Ary = LocatePlayer()
         let validArg = validMove(parseInt(Ary[0]) - 1,parseInt(Ary[1]))
@@ -99,7 +99,7 @@ document.addEventListener("keypress", e => {
             ALLGAMERUN()
         }
     }
-    else if (e.key == 'd' || e.key == "ArrowRight") {
+    else if (e.key == 'd' || e.key == "ArrowRight" || e.key === "D" || e.key === 6) {
         var player = document.querySelector('.player')
         let Ary = LocatePlayer()
         let validArg = validMove(parseInt(Ary[0]) + 1,parseInt(Ary[1]))
