@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FALLING TILES</title>
     <link rel="stylesheet" href="/dist/style.css">
+    <link rel="stylesheet" href="https://mokshdoshi.pages.dev/dist/logo.css">
     <script src="/app/js/main.js" type="module"></script>
     <script src="/app/js/game-logic.js" defer type="module"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/resources/Thumbnail FALicon FallingTiles (2) 1.svg" type="image/x-icon">
 </head>
 <body>
+    <a id="mokshdoshi_logo" class="mokshdoshi-colorburn"  href="http://mokshdoshi.pages.dev" >@MokshDoshi</a>
+
 
     <ui>
         <h1>Falling Tiles</h1>
@@ -27,7 +32,14 @@
     <div id="GameBoard">
         <div class="player"></div>
     </div>
-    <spanMine class="score-board" data-score="0">0</spanMine>
+
+    <spanMine class="score-board" data-score="0">
+        <h3>Score: <pre id="Score"></pre></h3>
+        <div>
+            High Score:<pre id="HighScore" data-highScore="0">0</pre>
+        </div>
+    </spanMine>
+
     <spanMine class="GamePad">
         <span class="material-symbols-outlined" style="grid-column: 2 / 3;" id="GAMEPAD-UP">
             arrow_back <!--move up-->
@@ -44,7 +56,10 @@
         </span>
     </spanMine>
 
-    <dialog class="OVER"><h1>Game Over</h1></dialog>
+    <dialog class="OVER">
+        <h1>Game Over</h1>
+        <button id="restart" > RESTART </button>
+    </dialog>
     
     <audio autoplay id="game-over-audio"></audio>
 
